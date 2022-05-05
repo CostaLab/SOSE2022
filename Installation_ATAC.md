@@ -1,4 +1,4 @@
-## Installation Guide for Practical Couse of SOSE 2021 (Part 2)
+## Installation Guide for Practical Couse of SOSE 2022 (Part 2)
 
 ```terminal
 ## Environment: Linux 64 bits

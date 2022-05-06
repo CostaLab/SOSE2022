@@ -22,7 +22,7 @@ python setupGenomicData.py --mm10
 ### 1. Download Data
 We download all data for analysis in this section.
 
-### 1.1 Obtain raw sequencing data
+#### 1.1 Raw sequencing data
 We will use publicly available ATAC-seq in this lecture, so please ensure you download them successfully.
 
 First, setup your working directory

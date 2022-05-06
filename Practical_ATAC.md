@@ -7,10 +7,41 @@ In this script, we will show you how to analyse NGS data from open chromatin pro
 * Paper: http://science.sciencemag.org/content/345/6199/943.long
 * Data: https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE26328
 
+## 0. RGT
+
+RGT is an open source Python 3.6+ library for analysis of regulatory genomics developed by CostaLab. The RGT toolbox is made of a core library and several tools. We will use it to perform motif matching in this tutorial.
+
+```terminal
+pip install RGT
+
+# setup genomic data
+cd ~/rgtdata
+python setupGenomicData.py --mm10
+```
+
 ### 1. Download Data
 We download all data for analysis in this section.
 
-#### 1.1 Convert SRA to FASTQ
+### 1.1 Obtain raw sequencing data
+We will use publicly available ATAC-seq in this lecture, so please ensure you download them successfully.
+
+First, setup your working directory
+```terminal
+mkdir ~/Practice
+cd ~/Practice
+```
+
+You can download directly from GEO server by
+```terminal
+prefetch SRR1533863 SRR1533847
+```
+This could be very slow depending on your internet. In this case, please download the data from our server
+```terminal
+wget https://costalab.ukaachen.de/open_data/bioinfolab_2021/practical_atac/SRR1533847.sra --no-check-certificate
+wget https://costalab.ukaachen.de/open_data/bioinfolab_2021/practical_atac/SRR1533863.sra --no-check-certificate
+```
+
+#### 1.2 Convert SRA to FASTQ
 
 SRA file is a compressed version of FASTQ file. When the downloading is  done, we can convert the file format from SRA to FASTQ using SRA toolkit
 ```terminal
@@ -22,7 +53,7 @@ Finally, let's rename the file names
 mv SRR1533863.fastq MPP.fastq
 mv SRR1533847.fastq B.fastq
 ```
-#### 1.2 Download reference genome
+#### 1.3 Download reference genome
 Since we dont have enough time to analyse the data in a genome-wide manner, we here only download the reference sequence for chromosome 19
 ```terminal
 wget http://hgdownload.soe.ucsc.edu/goldenPath/mm10/chromosomes/chr19.fa.gz
